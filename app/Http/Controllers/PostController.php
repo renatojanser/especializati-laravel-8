@@ -26,4 +26,43 @@ class PostController extends Controller
         return redirect()->route('posts.index');
 
     }
+
+    public function show($id){
+        if(!$post = Post::find($id)){
+            return redirect()->route('posts.index');
+        }
+
+        return view('admin.posts.show', compact('post'));
+    }
+
+    public function destroy($id)
+    {
+        if(!$post = Post::find($id)){
+            return redirect()->route('posts.index');
+        }
+
+        $post->delete();
+        return redirect()->route('posts.index')
+            ->with('message', 'Post Deletado com sucesso');
+    }
+
+    public function edit($id)
+    {
+        if(!$post = Post::find($id)){
+            return redirect()->back();
+        }
+
+        return view('admin.posts.edit', compact('post'));
+    }
+
+    public function update(StoreUpdatePost $request, $id)
+    {
+        if(!$post = Post::find($id)){
+            return redirect()->back();
+        }
+
+        $post->update($request->all());
+
+        return redirect()->route('posts.index');
+    }
 }
