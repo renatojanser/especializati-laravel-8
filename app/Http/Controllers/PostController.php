@@ -23,7 +23,8 @@ class PostController extends Controller
 
         Post::create($request->all());
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')
+            ->with('message', 'Post criado com sucesso!');
 
     }
 
@@ -63,6 +64,7 @@ class PostController extends Controller
 
         $post->update($request->all());
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')
+            ->with('message', 'Post editado com sucesso!');
     }
 }
