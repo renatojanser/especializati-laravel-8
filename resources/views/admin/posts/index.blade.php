@@ -15,3 +15,6 @@
         ]
     </p>
 @endforeach
+
+<hr>
+{{ $posts->links() }}
