@@ -1,6 +1,12 @@
-<h1>Cadastra novo post</h1>
+@extends('admin.layouts.app')
 
-<form action="{{ route('posts.store') }}" method="POST">
-    @csrf
-    @include('admin.posts._partials.form')
-</form>
+@section('title', 'Cadastra novo post')
+
+@section('content')
+    <h1>Cadastra novo post</h1>
+
+    <form action="{{ route('posts.store') }}" method="POST">
+        @csrf
+        @include('admin.posts._partials.form')
+    </form>
+@endsection
