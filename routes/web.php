@@ -17,11 +17,11 @@ Route::middleware(['auth'])->group(function() {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return redirect()->route('posts.index');
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('posts.index');
 });
 
 require __DIR__.'/auth.php';
